@@ -5,10 +5,6 @@ pub struct SubscriberName(String);
 
 impl SubscriberName {
     pub fn inner(self) -> String {
-        // The caller gets the inner string,
-        // but they do not have a SubscriberName anymore!
-        // That's because `inner` takes `self` by value,
-        // consuming it according to move semantics
         self.0
     }
 
@@ -20,6 +16,7 @@ impl SubscriberName {
         // whitespace-like characters.
         // `.is_empty` checks if the view contains any character.
         let is_empty_or_whitespace = s.trim().is_empty();
+
         // A grapheme is defined by the Unicode standard as a "user-perceived"
         // character: `å` is a single grapheme, but it is composed of two characters
         // (`a` and `̊`).
